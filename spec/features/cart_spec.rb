@@ -3,18 +3,18 @@ require 'spec_helper'
 describe "Shopping Cart" do 
 
   context "views" do 
-    it "should be on the index page" do 
+    it "should be on the index page" do
       visit root_path
       expect( page ).to have_content "Shopping Cart"
     end
 
     let!(:product) { Product.create(title: "ironing board", price: "100", description:"we do ironing boards well", :categories_list => "laundry") }
-   
+
     it "should persist on Category#index" do
       visit product_path(product)
       click_link "Add to Cart"
       visit categories_path
-      within( "#shopping_cart" ) do 
+      within( "#shopping_cart" ) do
         expect( page ).to have_content product.title
       end
     end
@@ -158,7 +158,23 @@ describe "Shopping Cart" do
       click_link "Add to Cart"
       click_link "Checkout"
       click_button "Remove"
-      expect( page ).to have_content "Total Items: 0"
+      expect( page ).to have_content "0 items"
+    end
+
+    it "should have a pay now link" do
+      visit product_path(product)
+      click_link "Add to Cart"
+      visit cart_path
+      expect( page ).to have_link "Buy Now"
+    end
+
+    it "unauthenticated users should be redirected to login" do
+      visit product_path(product)
+      click_link "Add to Cart"
+      visit cart_path
+      click_link "Buy Now"
+      expect( page ).to have_content "Username"
+      expect( page ).to have_content "Password"
     end
   
   end
