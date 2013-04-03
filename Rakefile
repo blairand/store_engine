@@ -14,6 +14,8 @@ begin
   RSpec::Core::RakeTask.new("spec:acceptance") do |t|
     t.rspec_opts = "--tag acceptance"
   end
+rescue
+  puts "Could not find rspec and I don't know why"
 end
 
 namespace :sanitation do
