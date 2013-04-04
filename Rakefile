@@ -23,7 +23,7 @@ namespace :sanitation do
   task :lines do
     puts ""
     puts "== using cane to check line length =="
-    system("cane --no-abc --style-glob 'lib/**/*.rb' --no-doc")
+    system("cane --no-abc --style-glob 'app/**/*.rb' --no-doc")
     puts "== done checking line length =="
     puts ""
   end
