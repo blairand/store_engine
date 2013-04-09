@@ -44,17 +44,9 @@ class Product < ActiveRecord::Base
   def self.landing_page
     result = Product.all.find_all(&:discount?) || result = []
     while result.count < 12
-      if product = Product.find_by_id((1..Product.all.size).to_a.sample)
-        result << product
-      else
-        result << Product.first
-      end
+      result << Product.find_by_id((1..Product.all.size).to_a.sample)
     end
-    if result.all?(&:nil?)
-      return []
-    else
-      return result.sort_by{|p|-p.discount}
-    end
+    result.sort_by{|p|-p.discount}
   end
 
   def margin

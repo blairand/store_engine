@@ -15,8 +15,8 @@ class ProductsController < ApplicationController
   end
 
   def landing_page
-    @panel_items = Product.landing_page || []
-    @recently_viewed = session[:page_views].map{|k,v| [Product.find(k), v]}
+    @panel_items = Product.landing_page
+    # @recently_viewed = session[:page_views].map{|k,v| [Product.find(k), v]}
   end
 
 end
