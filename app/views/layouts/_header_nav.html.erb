@@ -1,4 +1,4 @@
-<% if session[:total_views] < 3 %>
+<% if session[:total_views] < 10 %>
 <a href="#myModal" role="button" class="btn btn-warning btn-block" data-toggle="modal">Please Read</a>
 <% end %>
 <%if logged_in? %>
@@ -48,7 +48,7 @@
     <h3 id="myModalLabel">Welcome to the Honey-Can-Do Concept Store!</h3>
   </div>
   <div class="modal-body">
-    <p class="lead">We built this store for a gSchool project. The credit card processor only accepts fake number '4242 4242 4242 4242' Any purchases made are not real, and the product will not be shipped to you. </p>
+    <p class="lead">We built this 'concept' store for a gSchool project. The products are very real but the store is fake. We are not storing any data, the credit card processor is not real.  Any purchases made are not real, and the product will not be shipped to you. If you would like to buy Honey-Can-Do products, please visit <a href="http://www.honeycando.com">HoneyCanDo.com</a></p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
