@@ -13,6 +13,7 @@ gem 'roo'
 gem 'flowdock'
 gem 'newrelic_rpm'
 gem 'figaro'
+gem "resque", "~>1.24.0"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

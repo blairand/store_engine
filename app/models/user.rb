@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   validates :email, :uniqueness => true
 
+  validates :password, :length => { :in => 4..40 }, :allow_blank => false
+
   def to_s
     username
   end

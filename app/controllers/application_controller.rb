@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def search_terms
-    @search_terms ||= Product.all.map(&:title)
+    @search_terms ||= SearchTerms.list
   end
 
   private

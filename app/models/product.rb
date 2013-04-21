@@ -9,7 +9,11 @@ class Product < ActiveRecord::Base
   validates :price, :presence => true
   validates :cost_cents, :presence => true
 
-  # validates :description, :presence => true
+  before_save :calculate_rank
+
+  def calculate_rank
+    self.rank = (self.discount + self.page_views + 1 ) * 50
+  end
 
   def increase_view_count
     view_count = self.page_views
@@ -42,7 +46,7 @@ class Product < ActiveRecord::Base
   end
   
   def self.landing_page
-    result = Product.all.find_all(&:discount?) || result = []
+    result = Product.all.find_all(&:discount?)
     while result.count < 12
       result << Product.find_by_id((1..Product.all.size).to_a.sample)
     end
