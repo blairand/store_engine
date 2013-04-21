@@ -15,8 +15,7 @@ class ProductsController < ApplicationController
   end
 
   def landing_page
-    @panel_items ||= Product.order("rank DESC").limit(12).includes(:promotions)
-    # @recently_viewed = session[:page_views].map{|k,v| [Product.find(k), v]}
+    @panel_items = Product.where('rank > 0').order('rank desc').limit(12).includes(:promotions)
   end
 
 end
